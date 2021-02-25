@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  box-sizing: border-box;
+  height: 100px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.header > .left {
+  display: flex;
+  align-items: center;
+}
+
+.header > .center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0.7;
+  background: var(--highlight-color);
+  border-radius: 10px;
+  padding: 0 20px;
+}
+
+.center :first-child {
+  font-size: 20px;
+  color: grey;
+  margin-right: 5px;
+}
+
+.center input {
+  color: white;
+  border: none;
+  outline-style: none;
+  background: transparent;
+  width: 100%;
+  padding: 15px 0;
+}
+
+::placeholder {
+  color: grey;
+}
+
+:-ms-input-placeholder {
+  color: grey;
+}
+
+.header > .right {
+  display: flex;
+  align-items: center;
+}
+
+.right :nth-child(4) {
+  margin: 0 20px;
+}
