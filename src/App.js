@@ -4,7 +4,7 @@ import "./styles/App.css";
 
 function App() {
   return (
-    <div className="">
+    <div className="app">
       <Header />
       <MovieCarousel />
     </div>
