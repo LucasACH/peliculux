@@ -2,29 +2,53 @@
   display: flex;
   box-sizing: border-box;
   flex-wrap: wrap;
-  padding: 30px;
+  padding: 30px 15px 30px 30px;
   width: 100%;
 }
 
 .movies-grid > :not(:last-child) {
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .movies-grid > .movie-item {
+  position: relative;
   display: flex;
   box-sizing: border-box;
   flex-wrap: wrap;
+  flex-flow: column;
+  width: calc(100% / 5 - 25px);
+  aspect-ratio: 0.66;
   background: var(--highlight-color);
-  width: calc(100% / 5 - 15px);
-  background: grey;
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.movies-grid > .movie-item > .content-wrapper {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.movies-grid > .movie-item > .save-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.movies-grid > .movie-item:hover {
+  box-shadow: 0 0 10px 5px var(--accent-color);
+}
+
+.movies-grid > .movie-item:hover img {
+  opacity: 0.7;
 }
 
 .movies-grid > .movie-item img {
   max-width: 100%;
+  mask-image: linear-gradient(black, transparent 95%);
 }
 
 .margin-bottom {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
