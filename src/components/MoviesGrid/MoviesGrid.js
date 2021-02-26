@@ -1,5 +1,8 @@
 import React from "react";
 
+import { IconButton } from "@material-ui/core";
+import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+
 import "../../styles/MoviesGrid.css";
 
 function MoviesGrid() {
@@ -20,10 +23,17 @@ function MoviesGrid() {
         <div
           className={isLastRow(i) ? "movie-item margin-bottom" : "movie-item"}
         >
-          <img
+          {/* <img
             src="https://image.tmdb.org/t/p/w300/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg"
             alt=""
-          />
+          /> */}
+          <div className="content-wrapper">
+            <h4>Lorem Ipsum</h4>
+            <p className="date">February 26, 2021</p>
+          </div>
+          <IconButton className="save-button">
+            <BookmarkBorderIcon />
+          </IconButton>
         </div>
       ))}
     </div>
