@@ -3,6 +3,7 @@ import React from "react";
 import PrimaryButton from "../shared/PrimaryButton";
 import TextButton from "../shared/TextButton";
 import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import SearchIcon from "@material-ui/icons/Search";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -22,15 +23,21 @@ function Header() {
         <input type="text" placeholder="Search movies" />
       </div>
       <div className="right">
-        <IconButton>
-          <CodeIcon />
-        </IconButton>
-        <IconButton>
-          <BookmarkIcon />
-        </IconButton>
-        <IconButton>
-          <SettingsIcon />
-        </IconButton>
+        <Tooltip title="Source code">
+          <IconButton>
+            <CodeIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Saved movies">
+          <IconButton>
+            <BookmarkIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Settings">
+          <IconButton>
+            <SettingsIcon />
+          </IconButton>
+        </Tooltip>
         <TextButton input="Log In" />
         <PrimaryButton input="Sign Up" />
       </div>
