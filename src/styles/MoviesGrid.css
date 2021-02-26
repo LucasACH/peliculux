@@ -1,0 +1,30 @@
+.movies-grid {
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  padding: 30px;
+  width: 100%;
+}
+
+.movies-grid > :not(:last-child) {
+  margin-right: 15px;
+}
+
+.movies-grid > .movie-item {
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  background: var(--highlight-color);
+  width: calc(100% / 5 - 15px);
+  background: grey;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.movies-grid > .movie-item img {
+  max-width: 100%;
+}
+
+.margin-bottom {
+  margin-bottom: 15px;
+}
