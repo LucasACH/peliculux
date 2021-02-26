@@ -11,7 +11,7 @@ function MovieSpecs({ releaseYear, runtime, rating }) {
       <p>{runtime}</p>
       <div className="dot"></div>
       <p>{rating}</p>
-      <Rating name="read-only" precision={0.1} value={rating * 0.5} />
+      <Rating readOnly precision={0.1} value={rating * 0.5} />
     </div>
   );
 }
