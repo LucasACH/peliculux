@@ -1,4 +1,6 @@
 .header {
+  position: absolute;
+  z-index: 1;
   display: flex;
   box-sizing: border-box;
   height: 100px;
@@ -22,13 +24,13 @@
   padding: 0 20px;
 }
 
-.center :first-child {
+.header > .center > :first-child {
   font-size: 20px;
   color: grey;
   margin-right: 5px;
 }
 
-.center input {
+.header > .center input {
   color: white;
   border: none;
   outline-style: none;
@@ -50,6 +52,6 @@
   align-items: center;
 }
 
-.right :nth-child(4) {
+.header > .right > :nth-child(4) {
   margin: 0 20px;
 }
