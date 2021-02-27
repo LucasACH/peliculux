@@ -21,6 +21,7 @@ function MoviesGrid() {
     <div className="movies-grid">
       {[...Array(n)].map((e, i) => (
         <div
+          key={i}
           className={isLastRow(i) ? "movie-item margin-bottom" : "movie-item"}
         >
           {/* <img
