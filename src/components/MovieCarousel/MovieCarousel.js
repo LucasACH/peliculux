@@ -19,8 +19,8 @@ function MovieCarousel() {
           <div className="trailer">
             <iframe
               src="https://www.youtube.com/embed/"
-              frameborder="0"
-              allowfullscreen="allowfullscreen"
+              frameBorder="0"
+              allowFullScreen="allowfullscreen"
               mozallowfullscreen="mozallowfullscreen"
               msallowfullscreen="msallowfullscreen"
               oallowfullscreen="oallowfullscreen"
