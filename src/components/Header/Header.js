@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import PrimaryButton from "../shared/PrimaryButton";
 import TextButton from "../shared/TextButton";
@@ -13,14 +13,15 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 
 import "../../styles/Header.css";
 import FilterDrawer from "../FilterDrawer/FilterDrawer";
+import { DataContext } from "../../context/DataProvider";
 
 function Header() {
   const [isFixed, setIsFixed] = useState(false);
-  const [filterDrawerState, setFilterDrawerState] = useState(false);
+  const { filterDrawerState, setFilterDrawerState } = useContext(DataContext);
 
   const getPageYOffset = () => {
-    const marker = window.innerHeight * 0.5;
-    if (window.pageYOffset > marker) return setIsFixed(true);
+    const offsetMarker = window.innerHeight * 0.6;
+    if (window.pageYOffset > offsetMarker) return setIsFixed(true);
     return [setIsFixed(false), setFilterDrawerState(false)];
   };
 
@@ -29,7 +30,7 @@ function Header() {
     return () => {
       window.removeEventListener("scroll", getPageYOffset);
     };
-  }, []);
+  });
 
   const handleFilterDrawerState = () => {
     setFilterDrawerState(!filterDrawerState);
