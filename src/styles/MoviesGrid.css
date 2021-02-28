@@ -4,6 +4,11 @@
   flex-wrap: wrap;
   padding: 30px 15px 30px 30px;
   width: 100%;
+  transition: padding 0.3s ease-out;
+}
+
+.filter-drawer-open {
+  padding-left: calc(25% + 30px);
 }
 
 .movies-grid > :not(:last-child) {
