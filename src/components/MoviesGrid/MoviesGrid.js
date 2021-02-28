@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { IconButton } from "@material-ui/core";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 
 import "../../styles/MoviesGrid.css";
+import { DataContext } from "../../context/DataProvider";
 
 function MoviesGrid() {
   const n = 20;
+  const { filterDrawerState } = useContext(DataContext);
 
   const isLastRow = (index) => {
     if (n % 5 === 0 && index > n - 6) return false;
@@ -18,7 +20,11 @@ function MoviesGrid() {
   };
 
   return (
-    <div className="movies-grid">
+    <div
+      className={
+        filterDrawerState ? "movies-grid filter-drawer-open" : "movies-grid"
+      }
+    >
       {[...Array(n)].map((e, i) => (
         <div
           key={i}
