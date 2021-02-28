@@ -13,6 +13,14 @@ import CodeIcon from "@material-ui/icons/Code";
 import "../../styles/Header.css";
 
 function Header() {
+  const getPageYOffset = () => {
+    const marker = window.innerHeight * 0.7;
+    if (window.pageYOffset > marker) return true;
+    return false;
+  };
+
+  window.addEventListener("scroll", getPageYOffset);
+
   return (
     <div className="header">
       <div className="left">
