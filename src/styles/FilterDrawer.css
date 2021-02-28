@@ -1,0 +1,18 @@
+.filter-drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 25%;
+  margin-top: 100px;
+  padding-bottom: 30px;
+  height: calc(100% - 100px);
+  background: var(--primary-color);
+  transform: translateX(-110%);
+  transition: transform 0.3s ease-out;
+  overflow-x: visible;
+  box-shadow: 10px 10px 10px 0px var(--highlight-color);
+}
+
+.open {
+  transform: translateX(0);
+}
