@@ -12,14 +12,16 @@ import CodeIcon from "@material-ui/icons/Code";
 import FilterListIcon from "@material-ui/icons/FilterList";
 
 import "../../styles/Header.css";
+import FilterDrawer from "../FilterDrawer/FilterDrawer";
 
 function Header() {
   const [isFixed, setIsFixed] = useState(false);
+  const [filterDrawerState, setFilterDrawerState] = useState(false);
 
   const getPageYOffset = () => {
     const marker = window.innerHeight * 0.5;
     if (window.pageYOffset > marker) return setIsFixed(true);
-    return setIsFixed(false);
+    return [setIsFixed(false), setFilterDrawerState(false)];
   };
 
   useEffect(() => {
@@ -28,6 +30,10 @@ function Header() {
       window.removeEventListener("scroll", getPageYOffset);
     };
   }, []);
+
+  const handleFilterDrawerState = () => {
+    setFilterDrawerState(!filterDrawerState);
+  };
 
   return (
     <div className={isFixed ? "header fixed" : "header"}>
@@ -40,11 +46,14 @@ function Header() {
       </div>
       <div className="right">
         {isFixed ? (
-          <Tooltip title="Filter">
-            <IconButton>
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
+          <>
+            <Tooltip title="Filter">
+              <IconButton onClick={handleFilterDrawerState}>
+                <FilterListIcon />
+              </IconButton>
+            </Tooltip>
+            <FilterDrawer open={filterDrawerState} />
+          </>
         ) : (
           <>
             <Tooltip title="Source code">
