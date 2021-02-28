@@ -1,7 +1,9 @@
 import React from "react";
 
-function FilterDrawer() {
-  return <div className="filter-drawer"></div>;
+import "../../styles/FilterDrawer.css";
+
+function FilterDrawer({ open }) {
+  return <div className={open ? "filter-drawer open" : "filter-drawer"}></div>;
 }
 
 export default FilterDrawer;
