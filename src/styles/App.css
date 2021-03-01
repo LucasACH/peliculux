@@ -62,3 +62,26 @@ p {
 .MuiIconButton-root:hover {
   opacity: 0.8;
 }
+
+.app .MuiFormControl-root {
+  background: var(--highlight-color);
+  padding: 10px;
+  padding-left: 20px;
+  border-radius: 10px;
+  margin: 0;
+  margin-right: 15px;
+}
+
+.app .MuiSelect-root {
+  color: white;
+  margin-right: 20px;
+}
+
+.app .MuiSelect-root:focus {
+  background: var(--highlight-color);
+  border-radius: 10px;
+}
+
+.app .MuiSelect-icon {
+  color: white;
+}
