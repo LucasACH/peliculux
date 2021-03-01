@@ -14,6 +14,7 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import "../../styles/Header.css";
 import FilterDrawer from "../FilterDrawer/FilterDrawer";
 import { DataContext } from "../../context/DataProvider";
+import SortBySelect from "./SortBySelect";
 
 function Header() {
   const [isFixed, setIsFixed] = useState(false);
@@ -48,6 +49,7 @@ function Header() {
       <div className="right">
         {isFixed ? (
           <>
+            <SortBySelect />
             <Tooltip title="Filter">
               <IconButton onClick={handleFilterDrawerState}>
                 <FilterListIcon />
