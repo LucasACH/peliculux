@@ -7,19 +7,19 @@ function FilterDrawer({ open }) {
   return (
     <div className={open ? "filter-drawer open" : "filter-drawer"}>
       <div className="filter-item">
-        <p>Genres</p>
+        <h4>Genres</h4>
       </div>
       <Divider />
       <div className="filter-item">
-        <p>Rating</p>
+        <h4>Rating</h4>
       </div>
       <Divider />
       <div className="filter-item">
-        <p>Runtime</p>
+        <h4>Runtime</h4>
       </div>
       <Divider />
       <div className="filter-item">
-        <p>Release Date</p>
+        <h4>Release Date</h4>
       </div>
     </div>
   );
