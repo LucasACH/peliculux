@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 
 import "../../styles/MoviesGrid.css";
@@ -57,9 +57,11 @@ function MoviesGrid() {
             <h4>Lorem Ipsum</h4>
             <p className="date">February 26, 2021</p>
           </div>
-          <IconButton className="save-button">
-            <BookmarkBorderIcon />
-          </IconButton>
+          <Tooltip title="Save movie">
+            <IconButton className="save-button">
+              <BookmarkBorderIcon />
+            </IconButton>
+          </Tooltip>
         </div>
       ))}
     </div>
