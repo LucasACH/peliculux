@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { DataContext } from "../../context/DataProvider";
 
 function SortBySelect() {
-  const [sortBy, setSortBy] = useState("popularity.desc");
+  const { sortBy, setSortBy } = useContext(DataContext);
 
   const handleSortByChange = (event) => {
     setSortBy(event.target.value);
