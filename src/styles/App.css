@@ -85,3 +85,8 @@ p {
 .app .MuiSelect-icon {
   color: white;
 }
+
+.app .MuiDivider-root {
+  background-color: var(--highlight-color);
+  margin: 20px 0;
+}
