@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
 function SortBySelect() {
+  const [sortBy, setSortBy] = useState("popularity.desc");
+
+  const handleSortByChange = (event) => {
+    setSortBy(event.target.value);
+  };
+
   return (
     <FormControl margin="normal">
       <Select
         disableUnderline={true}
-        // value={sortBy}
-        // onChange={handleChange}
+        value={sortBy}
+        onChange={handleSortByChange}
       >
         <MenuItem value="popularity.desc">Popularity Descending</MenuItem>
         <MenuItem value="popularity.asc">Popularity Ascending</MenuItem>
