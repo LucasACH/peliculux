@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { IconButton } from "@material-ui/core";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
@@ -9,13 +9,32 @@ import { DataContext } from "../../context/DataProvider";
 function MoviesGrid() {
   const n = 20;
   const { filterDrawerState } = useContext(DataContext);
+  const [columnCount, setColumnCount] = useState(
+    window.innerWidth < 1600 ? 5 : 6
+  );
+
+  useEffect(() => {
+    const updateSize = () => {
+      setColumnCount(window.innerWidth < 1600 ? 5 : 6);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  });
 
   const isLastRow = (index) => {
-    if (n % 5 === 0 && index > n - 6) return false;
-    if (n % 5 === 4 && index > n - 5) return false;
-    if (n % 5 === 3 && index > n - 4) return false;
-    if (n % 5 === 2 && index > n - 3) return false;
-    if (n % 5 === 1 && index > n - 2) return false;
+    if (n % columnCount === 0 && index > n - (columnCount + 1)) return false;
+    if (n % columnCount === columnCount - 1 && index > n - columnCount)
+      return false;
+    if (n % columnCount === columnCount - 2 && index > n - (columnCount - 1))
+      return false;
+    if (n % columnCount === columnCount - 3 && index > n - (columnCount - 2))
+      return false;
+    if (n % columnCount === columnCount - 4 && index > n - (columnCount - 3))
+      return false;
+    if (n % columnCount === columnCount - 5 && index > n - (columnCount - 4))
+      return false;
+
     return true;
   };
 
@@ -30,10 +49,10 @@ function MoviesGrid() {
           key={i}
           className={isLastRow(i) ? "movie-item margin-bottom" : "movie-item"}
         >
-          {/* <img
+          <img
             src="https://image.tmdb.org/t/p/w300/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg"
             alt=""
-          /> */}
+          />
           <div className="content-wrapper">
             <h4>Lorem Ipsum</h4>
             <p className="date">February 26, 2021</p>
