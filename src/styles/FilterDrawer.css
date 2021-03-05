@@ -21,10 +21,10 @@
   margin: 0 30px;
 }
 
-.filter-drawer > .filter-item > :first-child {
-  margin-top: 20px;
+.filter-drawer > .filter-item h4 {
+  margin: 15px 0px;
 }
 
-.filter-drawer > .filter-item > :last-child {
-  margin-bottom: 20px;
+.filter-drawer > :first-child {
+  margin-bottom: 10px;
 }
