@@ -3,6 +3,8 @@ import React from "react";
 
 import "../../styles/FilterDrawer.css";
 import Genres from "./components/Genres";
+import Rating from "./components/Rating";
+import Runtime from "./components/Runtime";
 
 function FilterDrawer({ open }) {
   return (
@@ -14,10 +16,12 @@ function FilterDrawer({ open }) {
       <Divider />
       <div className="filter-item">
         <h4>Rating</h4>
+        <Rating />
       </div>
       <Divider />
       <div className="filter-item">
         <h4>Runtime</h4>
+        <Runtime />
       </div>
       <Divider />
       <div className="filter-item">
