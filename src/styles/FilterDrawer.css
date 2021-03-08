@@ -28,3 +28,7 @@
 .filter-drawer > :first-child {
   margin-bottom: 10px;
 }
+
+.filter-drawer :nth-child(5) :nth-child(2) {
+  margin-bottom: 20px;
+}
