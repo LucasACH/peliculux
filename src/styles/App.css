@@ -45,6 +45,12 @@ p {
   font-style: italic;
 }
 
+.link {
+  text-decoration: none;
+  margin: 0;
+  color: white;
+}
+
 .date {
   font-size: 13px;
   font-weight: 300;
