@@ -11,10 +11,13 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import CodeIcon from "@material-ui/icons/Code";
 import FilterListIcon from "@material-ui/icons/FilterList";
 
-import "../../styles/Header.css";
 import FilterDrawer from "../FilterDrawer/FilterDrawer";
 import { DataContext } from "../../context/DataProvider";
 import SortBySelect from "./SortBySelect";
+
+import { Link } from "react-router-dom";
+
+import "../../styles/Header.css";
 
 function Header() {
   const [isFixed, setIsFixed] = useState(false);
@@ -40,7 +43,9 @@ function Header() {
   return (
     <div className={isFixed ? "header fixed" : "header"}>
       <div className="left">
-        <h1>PELICULUX</h1>
+        <Link to="/">
+          <h1>PELICULUX</h1>
+        </Link>
       </div>
       <div className="center">
         <SearchIcon />
