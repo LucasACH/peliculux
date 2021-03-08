@@ -1,0 +1,4 @@
+.release-date .MuiTextField-root * {
+  color: white;
+  border-color: var(--highlight-color);
+}
