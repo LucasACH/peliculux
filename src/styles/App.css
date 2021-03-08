@@ -97,6 +97,7 @@ p {
 .app .MuiSlider-root {
   color: var(--accent-color);
   box-shadow: none;
+  margin-bottom: 10px;
 }
 
 .app .MuiSlider-root .MuiSlider-valueLabelLabel {
