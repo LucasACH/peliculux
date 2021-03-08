@@ -6,7 +6,7 @@ function Rating() {
   return (
     <div className="rating">
       <Slider
-        defaultValue={30}
+        defaultValue={10}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
         step={1}

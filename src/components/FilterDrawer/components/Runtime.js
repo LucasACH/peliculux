@@ -25,7 +25,7 @@ function Runtime() {
   return (
     <div className="runtime">
       <Slider
-        defaultValue={30}
+        defaultValue={360}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
         marks={marks}
