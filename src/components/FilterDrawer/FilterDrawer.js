@@ -4,6 +4,7 @@ import React from "react";
 import "../../styles/FilterDrawer.css";
 import Genres from "./components/Genres";
 import Rating from "./components/Rating";
+import ReleaseDate from "./components/ReleaseDate";
 import Runtime from "./components/Runtime";
 
 function FilterDrawer({ open }) {
@@ -26,6 +27,7 @@ function FilterDrawer({ open }) {
       <Divider />
       <div className="filter-item">
         <h4>Release Date</h4>
+        <ReleaseDate />
       </div>
     </div>
   );
