@@ -43,7 +43,7 @@ function Header() {
   return (
     <div className={isFixed ? "header fixed" : "header"}>
       <div className="left">
-        <Link to="/">
+        <Link className="link" to="/">
           <h1>PELICULUX</h1>
         </Link>
       </div>
