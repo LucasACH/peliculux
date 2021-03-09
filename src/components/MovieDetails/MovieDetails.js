@@ -3,6 +3,11 @@ import { useParams } from "react-router-dom";
 import placeholder from "../../placeholder.jpg";
 
 import "../../styles/MovieDetails.css";
+import MovieSpecs from "../shared/MovieSpecs";
+import PrimaryButton from "../shared/PrimaryButton";
+import SaveButton from "../shared/SaveButton";
+import TextButton from "../shared/TextButton";
+import YoutubeButton from "../shared/YoutubeButton";
 
 function MovieDetails() {
   let { movie_id } = useParams();
@@ -13,7 +18,42 @@ function MovieDetails() {
       </div>
       <div className="content-wrapper">
         <div className="left">
-          <div className="upper"></div>
+          <div className="upper">
+            <img
+              src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg"
+              alt=""
+            />
+            <div className="movie-data">
+              <h1>Lorem ipsum</h1>
+              <MovieSpecs releaseYear="2020" runtime="125 min" rating="6.8" />
+              <p className="tagline">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              </p>
+              <div className="genres">
+                <p>
+                  <b>Genres: </b> Lorem ipsum, Lorem ipsum, Lorem ipsum
+                </p>
+              </div>
+              <div className="overview">
+                <p>
+                  Cras sed risus tincidunt, auctor mauris ac, vestibulum quam.
+                  Pellentesque habitant morbi tristique senectus et netus et
+                  malesuada fames ac turpis egestas. Donec congue ullamcorper
+                  est imperdiet congue. Mauris dictum ultrices leo, ut dictum
+                  dui fermentum vel. Sed porta semper massa, sed mollis felis
+                  auctor at. Nunc vehicula laoreet sapien. Mauris dictum
+                  ultrices leo, ut dictum dui fermentum vel. Sed porta semper
+                  massa, sed mollis felis auctor at. Nunc vehicula laoreet
+                  sapien.
+                </p>
+              </div>
+              <div className="actions">
+                <PrimaryButton input="Watch Now" />
+                <SaveButton />
+                <YoutubeButton />
+              </div>
+            </div>
+          </div>
           <div className="lower"></div>
         </div>
         <div className="right"></div>
