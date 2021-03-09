@@ -6,7 +6,6 @@ import "../../styles/MovieDetails.css";
 import MovieSpecs from "../shared/MovieSpecs";
 import PrimaryButton from "../shared/PrimaryButton";
 import SaveButton from "../shared/SaveButton";
-import TextButton from "../shared/TextButton";
 import YoutubeButton from "../shared/YoutubeButton";
 
 function MovieDetails() {
