@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { IconButton, Tooltip } from "@material-ui/core";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-
 import "../../styles/MoviesGrid.css";
 import { DataContext } from "../../context/DataProvider";
+import SaveButton from "../shared/SaveButton";
 
 function MoviesGrid() {
   const n = 20;
@@ -57,11 +55,7 @@ function MoviesGrid() {
             <h4>Lorem Ipsum</h4>
             <p className="date">February 26, 2021</p>
           </div>
-          <Tooltip title="Save movie">
-            <IconButton className="save-button">
-              <BookmarkBorderIcon />
-            </IconButton>
-          </Tooltip>
+          <SaveButton />
         </div>
       ))}
     </div>
