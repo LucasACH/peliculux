@@ -7,6 +7,8 @@ import MovieSpecs from "../shared/MovieSpecs";
 import PrimaryButton from "../shared/PrimaryButton";
 import SaveButton from "../shared/SaveButton";
 import YoutubeButton from "../shared/YoutubeButton";
+import Cast from "./components/Cast";
+import ExtraInfo from "./components/ExtraInfo";
 import WatchTrailer from "./components/WatchTrailer";
 
 function MovieDetails() {
@@ -61,17 +63,17 @@ function MovieDetails() {
                 <PrimaryButton input="Watch Now" />
                 <SaveButton />
                 <YoutubeButton handleClick={openDialog} />
-                <WatchTrailer
-                  trailer_id={"2TmIzPODcTs"}
-                  handleOpen={open}
-                  handleClose={closeDialog}
-                />
+                <WatchTrailer handleOpen={open} handleClose={closeDialog} />
               </div>
             </div>
           </div>
-          <div className="lower"></div>
+          <div className="lower">
+            <Cast />
+          </div>
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <ExtraInfo />
+        </div>
       </div>
     </div>
   );
