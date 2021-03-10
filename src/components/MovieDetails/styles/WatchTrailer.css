@@ -1,0 +1,20 @@
+.watch-trailer .MuiDialog-paperFullWidth {
+  height: 80vh;
+  max-width: 80vw;
+  border-radius: 10px;
+  background: black;
+}
+
+.watch-trailer .MuiDialogContent-root {
+  padding: 0;
+  display: flex;
+}
+
+.watch-trailer .MuiDialogContent-root:first-of-type {
+  padding: 0;
+}
+
+.watch-trailer .MuiDialogContent-root iframe {
+  min-width: 100%;
+  min-height: 100%;
+}
