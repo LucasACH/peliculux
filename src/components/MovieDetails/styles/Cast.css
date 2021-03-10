@@ -1,0 +1,14 @@
+.cast {
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 30px;
+}
+
+.cast > .cast-item {
+  height: 100%;
+  width: calc(100% / 9);
+  background: var(--highlight-color);
+  border-radius: 10px;
+  margin-right: 15px;
+}
