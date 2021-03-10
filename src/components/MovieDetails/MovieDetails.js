@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import placeholder from "../../placeholder.jpg";
 
@@ -7,9 +7,20 @@ import MovieSpecs from "../shared/MovieSpecs";
 import PrimaryButton from "../shared/PrimaryButton";
 import SaveButton from "../shared/SaveButton";
 import YoutubeButton from "../shared/YoutubeButton";
+import WatchTrailer from "./components/WatchTrailer";
 
 function MovieDetails() {
   let { movie_id } = useParams();
+  const [open, setOpen] = useState(false);
+
+  const openDialog = () => {
+    setOpen(true);
+  };
+
+  const closeDialog = () => {
+    setOpen(false);
+  };
+
   return (
     <div className="movie-details">
       <div className="movie-details-backdrop">
@@ -49,7 +60,12 @@ function MovieDetails() {
               <div className="actions">
                 <PrimaryButton input="Watch Now" />
                 <SaveButton />
-                <YoutubeButton />
+                <YoutubeButton handleClick={openDialog} />
+                <WatchTrailer
+                  trailer_id={"2TmIzPODcTs"}
+                  handleOpen={open}
+                  handleClose={closeDialog}
+                />
               </div>
             </div>
           </div>
