@@ -16,7 +16,7 @@ export const SavedMoviesProvider = ({ children }) => {
 
     setMovies([]);
     movieIds.map((movieId) => {
-      axios({
+      return axios({
         method: "GET",
         url: `https://api.themoviedb.org/3/movie/${movieId}`,
         params: {
@@ -42,7 +42,7 @@ export const SavedMoviesProvider = ({ children }) => {
 
   return (
     <SavedMoviesContext.Provider
-      value={{ movies, movieIds, addMovieId, removeMovieId }}
+      value={{ loading, error, movies, movieIds, addMovieId, removeMovieId }}
     >
       {children}
     </SavedMoviesContext.Provider>

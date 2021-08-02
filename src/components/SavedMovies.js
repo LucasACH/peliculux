@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import "../styles/SavedMovies.css";
 import MoviesGrid from "./MoviesGrid/MoviesGrid";
+
+import "../styles/SavedMovies.css";
 
 function SavedMovies() {
   return (

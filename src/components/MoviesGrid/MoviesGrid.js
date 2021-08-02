@@ -63,7 +63,7 @@ function MoviesGrid({ saved = false }) {
     [popularMovies.loading]
   );
 
-  if (popularMovies.loading) {
+  if (popularMovies.loading || savedMovies.loading) {
     return (
       <div
         className={
