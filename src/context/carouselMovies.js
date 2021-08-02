@@ -4,8 +4,6 @@ import { PopularMoviesContext } from "./popularMovies";
 
 export const CarouselMoviesContext = createContext();
 
-const API_KEY = "ac2fbae093f0f234fd1e76ffe76cd7ef";
-
 export const CarouselMoviesProvider = ({ children }) => {
   const popularMovies = useContext(PopularMoviesContext);
 
@@ -18,7 +16,10 @@ export const CarouselMoviesProvider = ({ children }) => {
         axios({
           method: "GET",
           url: `https://api.themoviedb.org/3/movie/${movie.id}?append_to_response=videos`,
-          params: { api_key: API_KEY, language: "en-US" },
+          params: {
+            api_key: process.env.REACT_APP_TMDB_API_KEY,
+            language: "en-US",
+          },
         })
           .then((response) => {
             setCarouselMovies((prevMovies) => prevMovies.concat(response.data));

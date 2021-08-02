@@ -3,8 +3,6 @@ import { createContext, useEffect, useState } from "react";
 
 export const SavedMoviesContext = createContext();
 
-const API_KEY = "ac2fbae093f0f234fd1e76ffe76cd7ef";
-
 export const SavedMoviesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,7 +19,10 @@ export const SavedMoviesProvider = ({ children }) => {
       axios({
         method: "GET",
         url: `https://api.themoviedb.org/3/movie/${movieId}`,
-        params: { api_key: API_KEY, language: "en-US" },
+        params: {
+          api_key: process.env.REACT_APP_TMDB_API_KEY,
+          language: "en-US",
+        },
       })
         .then((response) => {
           setLoading(false);

@@ -3,8 +3,6 @@ import { createContext, useEffect, useState } from "react";
 
 export const PopularMoviesContext = createContext();
 
-const API_KEY = "ac2fbae093f0f234fd1e76ffe76cd7ef";
-
 export const PopularMoviesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,7 +20,7 @@ export const PopularMoviesProvider = ({ children }) => {
       method: "GET",
       url: "https://api.themoviedb.org/3/discover/movie",
       params: {
-        api_key: API_KEY,
+        api_key: process.env.REACT_APP_TMDB_API_KEY,
         page: page,
         sort_by: sortBy,
         with_genres: genres.join(", "),
