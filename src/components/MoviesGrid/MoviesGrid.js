@@ -16,6 +16,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import "../../styles/MoviesGrid.css";
 import spareSpace from "../../helpers/spareSpace";
 import { SavedMoviesContext } from "../../context/savedMovies";
+import { placeholder } from "@babel/types";
 
 function MoviesGrid({ saved = false }) {
   const state = useContext(StateContext);
@@ -64,7 +65,13 @@ function MoviesGrid({ saved = false }) {
 
   if (popularMovies.loading) {
     return (
-      <div className="movies-grid">
+      <div
+        className={
+          state.filterDrawerState
+            ? "movies-grid filter-drawer-open"
+            : "movies-grid"
+        }
+      >
         {[...Array(20).keys()].map((n, i) => movieItemPlaceholder(n, i))}
       </div>
     );
@@ -118,7 +125,11 @@ function MoviesGrid({ saved = false }) {
         }
       >
         <img
-          src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+          src={
+            movie.poster_path === null
+              ? placeholder
+              : `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+          }
           alt=""
         />
         <div className="content-wrapper">
