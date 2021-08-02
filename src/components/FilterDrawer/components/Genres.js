@@ -1,7 +1,10 @@
-import React from "react";
+import { useContext } from "react";
 import { Chip } from "@material-ui/core";
+import { PopularMoviesContext } from "../../../context/popularMovies";
 
 function Genres() {
+  const popularMovies = useContext(PopularMoviesContext);
+
   const genresList = [
     { key: 28, label: "Action" },
     { key: 12, label: "Adventure" },
@@ -24,10 +27,31 @@ function Genres() {
     { key: 37, label: "Western" },
   ];
 
+  function handleGenreChange(genreId) {
+    popularMovies.setLoading(true);
+    popularMovies.setMovies([]);
+    popularMovies.setPage(1);
+
+    if (popularMovies.genres.includes(genreId)) {
+      popularMovies.setGenres((prevGenres) =>
+        prevGenres.filter((id) => id !== genreId)
+      );
+    } else {
+      popularMovies.setGenres((prevGenres) => prevGenres.concat(genreId));
+    }
+  }
+
   return (
     <div className="genres">
-      {genresList.map((genre, i) => (
-        <Chip key={i} label={genre.label} onClick={() => null} />
+      {genresList.map((genre) => (
+        <Chip
+          key={genre.key}
+          label={genre.label}
+          color={
+            popularMovies.genres.includes(genre.key) ? "primary" : "secondary"
+          }
+          onClick={() => handleGenreChange(genre.key)}
+        />
       ))}
     </div>
   );

@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Slider from "@material-ui/core/Slider";
+import { PopularMoviesContext } from "../../../context/popularMovies";
 
 function Rating() {
+  const popularMovies = useContext(PopularMoviesContext);
+
+  const handleRatingChange = (_, newValue) => {
+    popularMovies.setLoading(true);
+    popularMovies.setMovies([]);
+    popularMovies.setPage(1);
+    popularMovies.setRating(newValue);
+  };
+
   return (
     <div className="rating">
       <Slider
-        defaultValue={10}
-        aria-labelledby="discrete-slider"
+        value={popularMovies.rating}
+        onChange={handleRatingChange}
+        defaultValue={[1, 10]}
+        aria-labelledby="range-slider"
         valueLabelDisplay="auto"
         step={1}
         marks

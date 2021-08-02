@@ -1,8 +1,18 @@
-import React from "react";
+import { useContext } from "react";
 
 import Slider from "@material-ui/core/Slider";
+import { PopularMoviesContext } from "../../../context/popularMovies";
 
 function Runtime() {
+  const popularMovies = useContext(PopularMoviesContext);
+
+  const handleRuntimeChange = (_, newValue) => {
+    popularMovies.setLoading(true);
+    popularMovies.setMovies([]);
+    popularMovies.setPage(1);
+    popularMovies.setRuntime(newValue);
+  };
+
   const marks = [
     {
       value: 0,
@@ -25,11 +35,13 @@ function Runtime() {
   return (
     <div className="runtime">
       <Slider
-        defaultValue={360}
-        aria-labelledby="discrete-slider"
+        value={popularMovies.runtime}
+        onChange={handleRuntimeChange}
+        defaultValue={[1, 10]}
+        aria-labelledby="range-slider"
         valueLabelDisplay="auto"
         marks={marks}
-        min={0}
+        min={1}
         max={360}
       />
     </div>
