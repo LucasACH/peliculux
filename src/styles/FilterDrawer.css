@@ -28,3 +28,10 @@
   row-gap: 10px;
   column-gap: 10px;
 }
+
+.filter-drawer > .filter-item > .release-date {
+  margin-top: 15px;
+  display: flex;
+  flex-flow: column;
+  row-gap: 20px;
+}

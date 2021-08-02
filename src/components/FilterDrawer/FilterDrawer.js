@@ -6,6 +6,7 @@ import Rating from "./components/Rating";
 import Runtime from "./components/Runtime";
 
 import "../../styles/FilterDrawer.css";
+import ReleaseDate from "./components/ReleaseDate";
 
 function FilterDrawer({ open }) {
   return (
@@ -47,6 +48,7 @@ function FilterDrawer({ open }) {
         <Typography color="textPrimary" variant="h6">
           Release Date
         </Typography>
+        <ReleaseDate />
       </div>
     </div>
   );

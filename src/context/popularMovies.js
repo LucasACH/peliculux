@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import formatReleaseDate from "../helpers/formatReleaseDate";
 
 export const PopularMoviesContext = createContext();
 
@@ -14,6 +15,8 @@ export const PopularMoviesProvider = ({ children }) => {
   const [genres, setGenres] = useState([]);
   const [rating, setRating] = useState([1, 10]);
   const [runtime, setRuntime] = useState([1, 360]);
+  const [from, setFrom] = useState(null);
+  const [to, setTo] = useState(formatReleaseDate(new Date()));
 
   useEffect(() => {
     axios({
@@ -28,6 +31,8 @@ export const PopularMoviesProvider = ({ children }) => {
         "vote_average.lte": rating[1],
         "with_runtime.gte": runtime[0],
         "with_runtime.lte": runtime[1],
+        "release_date.gte": from,
+        "release_date.lte": to,
       },
     })
       .then((response) => {
@@ -36,7 +41,7 @@ export const PopularMoviesProvider = ({ children }) => {
         setFirstTimeLoading(false);
       })
       .catch((error) => setError(error));
-  }, [page, sortBy, genres, rating, runtime]);
+  }, [page, sortBy, genres, rating, runtime, from, to]);
 
   return (
     <PopularMoviesContext.Provider
@@ -56,6 +61,10 @@ export const PopularMoviesProvider = ({ children }) => {
         setRating,
         runtime,
         setRuntime,
+        from,
+        setFrom,
+        to,
+        setTo,
       }}
     >
       {children}

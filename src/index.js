@@ -36,6 +36,10 @@ const theme = createTheme({
       800: "#23272E",
       900: "#1B1D23",
     },
+    background: {
+      paper: "#23272E",
+      default: "#2C3039",
+    },
     text: {
       primary: "#F5F5F5",
       secondary: "#EBEBEB",
@@ -45,11 +49,6 @@ const theme = createTheme({
     borderRadius: "10px",
   },
   overrides: {
-    MuiInputBase: {
-      root: {
-        background: "var(--highlight-color)",
-      },
-    },
     MuiOutlinedInput: {
       notchedOutline: {
         "&.PrivateNotchedOutline-root-3": {
@@ -60,6 +59,22 @@ const theme = createTheme({
     MuiFilledInput: {
       root: {
         borderRadius: "10px",
+      },
+      adornedStart: {
+        padding: "0px",
+        margin: "0px",
+      },
+      inputMarginDense: {
+        paddingTop: "15px",
+        paddingBottom: "12px",
+      },
+      underline: {
+        "&&&:before": {
+          borderBottom: "none",
+        },
+        "&&:after": {
+          borderBottom: "none",
+        },
       },
       input: {
         padding: "10px 15px",
@@ -78,6 +93,12 @@ const theme = createTheme({
       },
     },
     MuiInputAdornment: {
+      filled: {
+        "&.MuiInputAdornment-positionStart:not(.MuiInputAdornment-hiddenLabel)":
+          {
+            marginTop: "2px",
+          },
+      },
       root: {
         opacity: 0.5,
       },

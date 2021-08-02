@@ -1,4 +1,4 @@
-function formatDate(releaseDate) {
+function formatMoviesDate(releaseDate) {
   try {
     if (releaseDate !== undefined) {
       const date = new Date(releaseDate);
@@ -18,4 +18,4 @@ function formatDate(releaseDate) {
   }
 }
 
-export default formatDate;
+export default formatMoviesDate;

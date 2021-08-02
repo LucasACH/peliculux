@@ -135,3 +135,13 @@
 .margin-bottom {
   margin-bottom: 25px;
 }
+
+.movies-grid > .no-movies {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  row-gap: 10px;
+  width: calc(100% - 15px);
+  height: calc(100vh - 160px);
+}

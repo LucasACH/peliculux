@@ -52,10 +52,11 @@ function Header() {
       <div className="center">
         <TextField
           placeholder="Search movies"
-          variant="outlined"
+          variant="filled"
           fullWidth
           size="small"
           inputMode="text"
+          margin="none"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

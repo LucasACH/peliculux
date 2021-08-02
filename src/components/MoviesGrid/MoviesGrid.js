@@ -3,12 +3,18 @@ import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { StateContext } from "../../context/state";
 import { PopularMoviesContext } from "../../context/popularMovies";
 
-import formatDate from "../../helpers/formatDate";
+import formatMoviesDate from "../../helpers/formatMovieDate";
 import isLastRow from "../../helpers/isLastRow";
 
 import LoadingPlaceholder from "./loading-placeholder.png";
 
-import { Box, IconButton, Tooltip, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@material-ui/core";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import Skeleton from "@material-ui/lab/Skeleton";
@@ -17,6 +23,7 @@ import "../../styles/MoviesGrid.css";
 import spareSpace from "../../helpers/spareSpace";
 import { SavedMoviesContext } from "../../context/savedMovies";
 import { placeholder } from "@babel/types";
+import { Link } from "react-router-dom";
 
 function MoviesGrid({ saved = false }) {
   const state = useContext(StateContext);
@@ -63,7 +70,7 @@ function MoviesGrid({ saved = false }) {
     [popularMovies.loading]
   );
 
-  if (popularMovies.loading || savedMovies.loading) {
+  if (popularMovies.loading || (saved && savedMovies.loading)) {
     return (
       <div
         className={
@@ -87,9 +94,22 @@ function MoviesGrid({ saved = false }) {
     >
       {saved ? (
         <>
-          {savedMovies.movies.map((movie, i) => {
-            return movieItem(movie, i);
-          })}
+          {savedMovies.movies.length > 0 ? (
+            savedMovies.movies.map((movie, i) => {
+              return movieItem(movie, i);
+            })
+          ) : (
+            <div className="no-movies">
+              <Typography color="textPrimary" variant="h5">
+                No movies
+              </Typography>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Button color="primary" href="/" variant="contained">
+                  Go to popular
+                </Button>
+              </Link>
+            </div>
+          )}
         </>
       ) : (
         <>
@@ -138,7 +158,7 @@ function MoviesGrid({ saved = false }) {
               {movie.title}
             </Box>
             <Box fontWeight="fontWeightLight" fontSize="body2.fontSize">
-              {() => formatDate(movie.release_date)}
+              {() => formatMoviesDate(movie.release_date)}
             </Box>
           </Typography>
         </div>

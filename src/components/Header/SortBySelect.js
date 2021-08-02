@@ -10,8 +10,9 @@ function SortBySelect() {
   const popularMovies = useContext(PopularMoviesContext);
 
   function handleSortByChange(event) {
-    popularMovies.setPage(1);
+    popularMovies.setLoading(true);
     popularMovies.setMovies([]);
+    popularMovies.setPage(1);
     popularMovies.setSortBy(event.target.value);
   }
 
