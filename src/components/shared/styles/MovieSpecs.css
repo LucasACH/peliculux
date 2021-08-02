@@ -1,0 +1,20 @@
+.movie-specs {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+
+.movie-specs > .dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 100%;
+  background: white;
+  margin: 0 20px;
+}
+
+.movie-specs > .MuiRating-root {
+  color: var(--accent-color);
+  margin-left: 5px;
+  font-size: 20px;
+}

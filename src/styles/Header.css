@@ -1,0 +1,35 @@
+.header {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  box-sizing: border-box;
+  height: 100px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.fixed {
+  position: fixed;
+  background: var(--primary-color);
+  transition: all 0.5s linear;
+  box-shadow: 0px 0px 10px 10px var(--highlight-color);
+}
+
+.header > .left {
+  display: flex;
+  align-items: center;
+}
+
+.header > .center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0.7;
+}
+
+.header > .right {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}

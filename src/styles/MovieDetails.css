@@ -1,0 +1,87 @@
+.movie-details {
+  height: 100vh;
+  position: relative;
+}
+
+.movie-details > .movie-details-backdrop {
+  height: 100%;
+  width: 100%;
+  mask-image: linear-gradient(transparent, black, transparent);
+  overflow: hidden;
+}
+.movie-details > .movie-details-backdrop img {
+  max-width: 100%;
+  opacity: 0.5;
+}
+
+.movie-details > .content-wrapper {
+  width: 100%;
+  height: calc(100% - 100px);
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 30px;
+  display: flex;
+}
+
+.movie-details > .content-wrapper > .left {
+  width: 80%;
+  height: 100%;
+}
+
+.movie-details > .content-wrapper > .left > .upper {
+  width: 100%;
+  height: 70%;
+  box-sizing: border-box;
+  display: flex;
+  padding-right: 40%;
+}
+
+.movie-details > .content-wrapper > .left > .upper img {
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: 0 0 20px 5px var(--primary-color);
+}
+
+.movie-details > .content-wrapper > .left > .upper > .movie-data {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding-left: 30px;
+}
+
+.movie-details
+  > .content-wrapper
+  > .left
+  > .upper
+  > .movie-data
+  > :not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.movie-details > .content-wrapper > .left > .upper > .movie-data > .overview {
+  flex: 1 1 auto;
+  overflow: scroll;
+}
+
+.movie-details
+  > .content-wrapper
+  > .left
+  > .upper
+  > .movie-data
+  > .actions
+  > :first-child {
+  margin-right: 10px;
+}
+
+.movie-details > .content-wrapper > .left > .lower {
+  width: 100%;
+  height: 30%;
+}
+
+.movie-details > .content-wrapper > .right {
+  width: 20%;
+  height: 100%;
+  float: right;
+}

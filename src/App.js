@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Header from "./components/Header/Header";
+import MovieCarousel from "./components/MovieCarousel/MovieCarousel";
+import MoviesGrid from "./components/MoviesGrid/MoviesGrid";
+import MovieDetails from "./components/MovieDetails/MovieDetails";
+import SavedMovies from "./components/SavedMovies";
+
+import { StateProvider } from "./context/state";
+import { PopularMoviesProvider } from "./context/popularMovies";
+import { CarouselMoviesProvider } from "./context/carouselMovies";
+import { SavedMoviesProvider } from "./context/savedMovies";
+
+import "./styles/App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StateProvider>
+      <PopularMoviesProvider>
+        <CarouselMoviesProvider>
+          <SavedMoviesProvider>
+            <div className="app">
+              <Router>
+                <Header />
+                <Switch>
+                  <Route path="/saved-movies">
+                    <SavedMovies />
+                  </Route>
+                  <Route path="/movie/:movie_id">
+                    <MovieDetails />
+                  </Route>
+                  <Route path="/">
+                    <MovieCarousel />
+                    <MoviesGrid />
+                  </Route>
+                </Switch>
+              </Router>
+            </div>
+          </SavedMoviesProvider>
+        </CarouselMoviesProvider>
+      </PopularMoviesProvider>
+    </StateProvider>
   );
 }
 
