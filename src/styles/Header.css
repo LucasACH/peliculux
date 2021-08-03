@@ -17,8 +17,10 @@
 }
 
 .header > .left {
+  margin-left: 12px;
   display: flex;
   align-items: center;
+  max-width: 210px;
 }
 
 .header > .center {

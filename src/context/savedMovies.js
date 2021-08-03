@@ -15,6 +15,9 @@ export const SavedMoviesProvider = ({ children }) => {
     localStorage.setItem("saved-movies", JSON.stringify(movieIds));
 
     setMovies([]);
+
+    if (movieIds.length === 0) setLoading(false);
+
     movieIds.map((movieId) => {
       return axios({
         method: "GET",

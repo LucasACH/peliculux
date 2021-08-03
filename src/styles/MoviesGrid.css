@@ -1,5 +1,6 @@
 .movies-grid {
   display: flex;
+  min-height: calc(100vh - 100px);
   float: right;
   box-sizing: border-box;
   flex-wrap: wrap;
@@ -16,93 +17,47 @@
   margin-right: 25px;
 }
 
-@media (max-width: 1600px) {
-  .movies-grid > .movie-item {
-    position: relative;
-    display: flex;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    flex-flow: column;
-    width: calc(100% / 5 - 25px);
-    background: var(--highlight-color);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-  }
+.movies-grid > .movie-item {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  flex-flow: column;
+  width: auto;
+  width: calc(100% / 6 - 25px);
+  background: var(--highlight-color);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-@media (min-width: 1600px) {
+@media (max-width: 1600px) {
   .movies-grid > .movie-item {
-    position: relative;
-    display: flex;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    flex-flow: column;
-    width: calc(100% / 6 - 25px);
-    background: var(--highlight-color);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
+    width: calc(100% / 5 - 25px);
   }
 }
 
 @media (max-width: 1200px) {
   .movies-grid > .movie-item {
-    position: relative;
-    display: flex;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    flex-flow: column;
     width: calc(100% / 4 - 25px);
-    background: var(--highlight-color);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
   }
 }
 
 @media (max-width: 900px) {
   .movies-grid > .movie-item {
-    position: relative;
-    display: flex;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    flex-flow: column;
     width: calc(100% / 3 - 25px);
-    background: var(--highlight-color);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
   }
 }
 
 @media (max-width: 700px) {
   .movies-grid > .movie-item {
-    position: relative;
-    display: flex;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    flex-flow: column;
     width: calc(100% / 2 - 25px);
-    background: var(--highlight-color);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
   }
 }
 
 @media (max-width: 500px) {
   .movies-grid > .movie-item {
-    position: relative;
-    display: flex;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    flex-flow: column;
     width: calc(100% - 25px);
-    background: var(--highlight-color);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
   }
 }
 

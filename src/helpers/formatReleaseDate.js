@@ -1,6 +1,4 @@
 function formatReleaseDate(releaseDate) {
-  const date = new Date(releaseDate);
-
   let year = new Intl.DateTimeFormat("en", {
     year: "numeric",
   }).format(releaseDate);

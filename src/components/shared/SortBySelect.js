@@ -1,25 +1,21 @@
 import { useContext } from "react";
-
-import { PopularMoviesContext } from "../../context/popularMovies";
-
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { MoviesContext } from "../../context/MoviesContext";
 
 function SortBySelect() {
-  const popularMovies = useContext(PopularMoviesContext);
+  const moviesContext = useContext(MoviesContext);
 
   function handleSortByChange(event) {
-    popularMovies.setLoading(true);
-    popularMovies.setMovies([]);
-    popularMovies.setPage(1);
-    popularMovies.setSortBy(event.target.value);
+    moviesContext.setSortBy(event.target.value);
+    moviesContext.setPage(1);
   }
 
   return (
     <FormControl>
       <Select
-        value={popularMovies.sortBy}
+        value={moviesContext.sortBy}
         onChange={handleSortByChange}
         variant="filled"
         disableUnderline

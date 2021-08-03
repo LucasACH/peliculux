@@ -1,16 +1,11 @@
-import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 import formatReleaseDate from "../helpers/formatReleaseDate";
 
-export const PopularMoviesContext = createContext();
+export const MoviesContext = createContext();
 
-export const PopularMoviesProvider = ({ children }) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [firstTimeLoading, setFirstTimeLoading] = useState(true);
+export const MoviesProvider = ({ children }) => {
   const [page, setPage] = useState(1);
-  const [movies, setMovies] = useState([]);
-
   const [sortBy, setSortBy] = useState("popularity.desc");
   const [genres, setGenres] = useState([]);
   const [rating, setRating] = useState([1, 10]);
@@ -18,10 +13,27 @@ export const PopularMoviesProvider = ({ children }) => {
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(formatReleaseDate(new Date()));
 
+  const [loading, setLoading] = useState(true);
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [error, setError] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
+  const [movies, setMovies] = useState([]);
+  const [carouselMovies, setCarouselMovies] = useState([]);
+
+  const CancelToken = axios.CancelToken;
+  const source = CancelToken.source();
+
   useEffect(() => {
+    if (page === 1 && !firstLoad) {
+      setLoading(true);
+      setMovies([]);
+      window.scrollTo(0, window.innerHeight * 0.7);
+    }
+
     axios({
       method: "GET",
       url: "https://api.themoviedb.org/3/discover/movie",
+      cancelToken: source.token,
       params: {
         api_key: process.env.REACT_APP_TMDB_API_KEY,
         page: page,
@@ -36,23 +48,34 @@ export const PopularMoviesProvider = ({ children }) => {
       },
     })
       .then((response) => {
-        setLoading(false);
         setMovies((prevMovies) => prevMovies.concat(response.data.results));
-        setFirstTimeLoading(false);
+        if (firstLoad) setCarouselMovies(response.data.results.slice(0, 5));
+
+        setHasMore(response.data.results.length > 0);
+        setFirstLoad(false);
+        setLoading(false);
       })
-      .catch((error) => setError(error));
+      .catch(function (thrown) {
+        if (axios.isCancel(thrown)) {
+          console.log("Request canceled", thrown.message);
+        } else {
+          setError(error);
+        }
+      });
+
+    return () => source.cancel("Operation canceled by the user.");
   }, [page, sortBy, genres, rating, runtime, from, to]);
 
   return (
-    <PopularMoviesContext.Provider
+    <MoviesContext.Provider
       value={{
-        loading,
-        setLoading,
-        error,
-        firstTimeLoading,
+        page,
         setPage,
+        loading,
+        error,
+        hasMore,
         movies,
-        setMovies,
+        carouselMovies,
         sortBy,
         setSortBy,
         genres,
@@ -68,6 +91,6 @@ export const PopularMoviesProvider = ({ children }) => {
       }}
     >
       {children}
-    </PopularMoviesContext.Provider>
+    </MoviesContext.Provider>
   );
 };

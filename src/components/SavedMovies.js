@@ -1,4 +1,4 @@
-import MoviesGrid from "./MoviesGrid/MoviesGrid";
+import MoviesGrid from "./MoviesGrid";
 
 import "../styles/SavedMovies.css";
 

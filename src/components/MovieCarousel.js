@@ -1,19 +1,20 @@
 import { useContext } from "react";
+import { MoviesContext } from "../context/MoviesContext";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-import MovieSpecs from "../shared/MovieSpecs";
-import { CarouselMoviesContext } from "../../context/carouselMovies";
+import MovieSpecs from "./shared/MovieSpecs";
+import YoutubeTrailer from "./shared/YoutubeTrailer";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import { Box, Button, Typography } from "@material-ui/core";
 import { Carousel } from "react-responsive-carousel";
 
-import "../../styles/MovieCarousel.css";
+import "../styles/MovieCarousel.css";
 
 function MovieCarousel() {
-  const { carouselMovies } = useContext(CarouselMoviesContext);
+  const moviesContext = useContext(MoviesContext);
 
-  if (carouselMovies.length < 5) {
+  if (moviesContext.carouselMovies.length < 5) {
     return (
       <div className="movie-carousel">
         <div className="content-wrapper">
@@ -77,6 +78,7 @@ function MovieCarousel() {
   return (
     <Carousel
       showThumbs={false}
+      interval={4000}
       transitionTime={700}
       autoPlay
       stopOnHover
@@ -84,15 +86,7 @@ function MovieCarousel() {
       infiniteLoop
       showArrows={false}
     >
-      {carouselMovies.map((movie, i) => {
-        let movieTrailer = "";
-
-        movie.videos.results.forEach((video) => {
-          if (movieTrailer === "" && video.type === "Trailer") {
-            movieTrailer = video.key;
-          }
-        });
-
+      {moviesContext.carouselMovies.map((movie) => {
         return (
           <div className="movie-carousel" key={movie.id}>
             <div className="slider-backdrop">
@@ -103,18 +97,7 @@ function MovieCarousel() {
             </div>
             <div className="content-wrapper">
               <div className="left">
-                <div className="trailer">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${movieTrailer}`}
-                    frameBorder="0"
-                    allowFullScreen="allowfullscreen"
-                    mozallowfullscreen="mozallowfullscreen"
-                    msallowfullscreen="msallowfullscreen"
-                    oallowfullscreen="oallowfullscreen"
-                    webkitallowfullscreen="webkitallowfullscreen"
-                    title="video"
-                  />
-                </div>
+                <YoutubeTrailer movieId={movie.id} />
               </div>
               <div className="right">
                 <div className="content-wrapper">

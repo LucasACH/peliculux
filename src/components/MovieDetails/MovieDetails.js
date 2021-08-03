@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import placeholder from "../../placeholder.jpg";
 
 import "../../styles/MovieDetails.css";
@@ -10,7 +10,7 @@ import ExtraInfo from "./components/ExtraInfo";
 import WatchTrailer from "./components/WatchTrailer";
 
 function MovieDetails() {
-  // let { movie_id } = useParams();
+  let { movie_id } = useParams();
   const [open, setOpen] = useState(false);
 
   const openDialog = () => {
@@ -34,7 +34,7 @@ function MovieDetails() {
               alt=""
             />
             <div className="movie-data">
-              <h1>Lorem ipsum</h1>
+              <h1>{movie_id}</h1>
               <MovieSpecs releaseYear="2020" runtime="125 min" rating="6.8" />
               <p className="tagline">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit

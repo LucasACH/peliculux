@@ -1,13 +1,8 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
-
-import { StateContext } from "../../context/state";
-import { PopularMoviesContext } from "../../context/popularMovies";
-
-import formatMoviesDate from "../../helpers/formatMovieDate";
-import isLastRow from "../../helpers/isLastRow";
-
-import LoadingPlaceholder from "./loading-placeholder.png";
-
+import { MoviesContext } from "../context/MoviesContext";
+import { StateContext } from "../context/StateContext";
+import formatMoviesDate from "../helpers/formatMovieDate";
+import isLastRow from "../helpers/isLastRow";
 import {
   Box,
   Button,
@@ -18,21 +13,20 @@ import {
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import Skeleton from "@material-ui/lab/Skeleton";
-
-import "../../styles/MoviesGrid.css";
-import spareSpace from "../../helpers/spareSpace";
-import { SavedMoviesContext } from "../../context/savedMovies";
-import { placeholder } from "@babel/types";
+import spareSpace from "../helpers/spareSpace";
+import { SavedMoviesContext } from "../context/savedMovies";
 import { Link } from "react-router-dom";
+import loadingPlaceholder from "../loading-placeholder.png";
+import "../styles/MoviesGrid.css";
 
 function MoviesGrid({ saved = false }) {
-  const state = useContext(StateContext);
-  const popularMovies = useContext(PopularMoviesContext);
+  const moviesContext = useContext(MoviesContext);
+  const { filterDrawerState } = useContext(StateContext);
   const savedMovies = useContext(SavedMoviesContext);
 
-  const observer = useRef();
-
   const [columnCount, setColumnCount] = useState(null);
+
+  const observer = useRef();
 
   useEffect(() => {
     const updateSize = () => {
@@ -58,25 +52,23 @@ function MoviesGrid({ saved = false }) {
 
   const lastMovieElementRef = useCallback(
     (node) => {
-      if (popularMovies.loading) return;
+      if (moviesContext.loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          popularMovies.setPage((prevPage) => prevPage + 1);
+        if (entries[0].isIntersecting && moviesContext.hasMore) {
+          moviesContext.setPage((prevPage) => prevPage + 1);
         }
       });
       if (node) observer.current.observe(node);
     },
-    [popularMovies.loading]
+    [moviesContext.loading, moviesContext.hasMore]
   );
 
-  if (popularMovies.loading || (saved && savedMovies.loading)) {
+  if (moviesContext.loading || moviesContext.error) {
     return (
       <div
         className={
-          state.filterDrawerState
-            ? "movies-grid filter-drawer-open"
-            : "movies-grid"
+          filterDrawerState ? "movies-grid filter-drawer-open" : "movies-grid"
         }
       >
         {[...Array(20).keys()].map((n, i) => movieItemPlaceholder(n, i))}
@@ -87,9 +79,7 @@ function MoviesGrid({ saved = false }) {
   return (
     <div
       className={
-        state.filterDrawerState
-          ? "movies-grid filter-drawer-open"
-          : "movies-grid"
+        filterDrawerState ? "movies-grid filter-drawer-open" : "movies-grid"
       }
     >
       {saved ? (
@@ -113,7 +103,7 @@ function MoviesGrid({ saved = false }) {
         </>
       ) : (
         <>
-          {popularMovies.movies.map((movie, i) => {
+          {moviesContext.movies.map((movie, i) => {
             return movieItem(movie, i);
           })}
         </>
@@ -125,7 +115,7 @@ function MoviesGrid({ saved = false }) {
         <>
           {[
             ...Array(
-              spareSpace(popularMovies.movies.length, columnCount)
+              spareSpace(moviesContext.movies.length, columnCount)
             ).keys(),
           ].map((n, i) => movieItemPlaceholder(n, i))}
         </>
@@ -137,9 +127,9 @@ function MoviesGrid({ saved = false }) {
     return (
       <div
         key={movie.id}
-        ref={popularMovies.movies.length === i + 1 ? lastMovieElementRef : null}
+        ref={moviesContext.movies.length === i + 1 ? lastMovieElementRef : null}
         className={
-          isLastRow(i, popularMovies.movies.length)
+          isLastRow(i, moviesContext.movies.length)
             ? "movie-item margin-bottom"
             : "movie-item"
         }
@@ -147,7 +137,7 @@ function MoviesGrid({ saved = false }) {
         <img
           src={
             movie.poster_path === null
-              ? placeholder
+              ? "/loading-placeholder.png"
               : `https://image.tmdb.org/t/p/w300${movie.poster_path}`
           }
           alt=""
@@ -192,7 +182,7 @@ function MoviesGrid({ saved = false }) {
         }
       >
         <Skeleton variant="rect" animation="wave">
-          <img src={LoadingPlaceholder} alt="" />
+          <img src={loadingPlaceholder} alt="" />
         </Skeleton>
         <div className="content-wrapper">
           <Typography component="div" color="textPrimary">

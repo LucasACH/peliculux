@@ -1,12 +1,12 @@
 import { Divider, Typography } from "@material-ui/core";
 import React from "react";
 
-import Genres from "./components/Genres";
-import Rating from "./components/Rating";
-import Runtime from "./components/Runtime";
+import Genres from "./shared/Genres";
+import Rating from "./shared/Rating";
+import Runtime from "./shared/Runtime";
 
-import "../../styles/FilterDrawer.css";
-import ReleaseDate from "./components/ReleaseDate";
+import "../styles/FilterDrawer.css";
+import ReleaseDate from "./shared/ReleaseDate";
 
 function FilterDrawer({ open }) {
   return (
