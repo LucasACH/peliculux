@@ -3,7 +3,6 @@ import { MoviesContext } from "../context/MoviesContext";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 import MovieSpecs from "./shared/MovieSpecs";
-import YoutubeTrailer from "./shared/YoutubeTrailer";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import { Box, Button, Typography } from "@material-ui/core";
@@ -97,7 +96,18 @@ function MovieCarousel() {
             </div>
             <div className="content-wrapper">
               <div className="left">
-                <YoutubeTrailer movieId={movie.id} />
+                <div className="trailer">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${movie.trailer_id}`}
+                    frameBorder="0"
+                    allowFullScreen="allowfullscreen"
+                    mozallowfullscreen="mozallowfullscreen"
+                    msallowfullscreen="msallowfullscreen"
+                    oallowfullscreen="oallowfullscreen"
+                    webkitallowfullscreen="webkitallowfullscreen"
+                    title="video"
+                  />
+                </div>
               </div>
               <div className="right">
                 <div className="content-wrapper">

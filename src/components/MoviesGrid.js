@@ -14,7 +14,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import Skeleton from "@material-ui/lab/Skeleton";
 import spareSpace from "../helpers/spareSpace";
-import { SavedMoviesContext } from "../context/savedMovies";
+import { SavedMoviesContext } from "../context/SavedMoviesContext";
 import { Link } from "react-router-dom";
 import loadingPlaceholder from "../loading-placeholder.png";
 import "../styles/MoviesGrid.css";

@@ -8,7 +8,7 @@ import SavedMovies from "./components/SavedMovies";
 
 import { StateProvider } from "./context/StateContext";
 import { MoviesProvider } from "./context/MoviesContext";
-import { SavedMoviesProvider } from "./context/savedMovies";
+import { SavedMoviesProvider } from "./context/SavedMoviesContext";
 
 import "./App.css";
 

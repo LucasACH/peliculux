@@ -48,11 +48,34 @@ export const MoviesProvider = ({ children }) => {
       },
     })
       .then((response) => {
-        setMovies((prevMovies) => prevMovies.concat(response.data.results));
-        if (firstLoad) setCarouselMovies(response.data.results.slice(0, 5));
-
         setHasMore(response.data.results.length > 0);
-        setFirstLoad(false);
+        setMovies((prevMovies) => prevMovies.concat(response.data.results));
+
+        if (firstLoad) {
+          response.data.results.slice(0, 5).map((movie) => {
+            return axios({
+              method: "GET",
+              url: `https://api.themoviedb.org/3/movie/${movie.id}`,
+              params: {
+                api_key: process.env.REACT_APP_TMDB_API_KEY,
+                language: "en-US",
+                append_to_response: "videos",
+              },
+            })
+              .then((response) => {
+                response.data.videos.results.forEach((video) => {
+                  if (video.type === "Trailer" && video.site === "YouTube") {
+                    response.data.trailer_id = video.key;
+                  }
+                });
+                setCarouselMovies((prevMovies) =>
+                  prevMovies.concat(response.data)
+                );
+                setFirstLoad(false);
+              })
+              .catch((error) => console.error(error));
+          });
+        }
         setLoading(false);
       })
       .catch(function (thrown) {
