@@ -1,0 +1,13 @@
+.movie-info {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.movie-info > .actions {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}

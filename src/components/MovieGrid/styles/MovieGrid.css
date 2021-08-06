@@ -1,0 +1,100 @@
+.movies-grid {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px 15px 30px 30px;
+  row-gap: 25px;
+  column-gap: 25px;
+  float: right;
+  box-sizing: border-box;
+  transition: width 0.2s ease-out;
+}
+
+.movies-grid > .spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.filter-drawer-open {
+  width: 75%;
+}
+
+.avoid-header {
+  margin-top: 100px;
+}
+
+.movies-grid > .grid-item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  background: var(--highlight-color);
+  width: calc(100% / 6 - 25px);
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.movies-grid > .grid-item:hover {
+  box-shadow: 0 0 10px 5px var(--accent-color);
+}
+
+.movies-grid > .grid-item img {
+  max-width: 100%;
+  mask-image: linear-gradient(black, transparent 95%);
+}
+
+.movies-grid > .grid-item:hover img {
+  opacity: 0.7;
+}
+
+.movies-grid > .grid-item .title-wrapper {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 0px 40px 15px 15px;
+}
+
+.movies-grid > .grid-item > .save-button {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+}
+
+@media (max-width: 1600px) {
+  .movies-grid > .grid-item {
+    width: calc(100% / 5 - 25px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .movies-grid > .grid-item {
+    width: calc(100% / 4 - 25px);
+  }
+}
+
+@media (max-width: 900px) {
+  .movies-grid > .grid-item {
+    width: calc(100% / 3 - 25px);
+  }
+}
+
+@media (max-width: 700px) {
+  .movies-grid > .grid-item {
+    width: calc(100% / 2 - 25px);
+  }
+}
+
+@media (max-width: 500px) {
+  .movies-grid > .grid-item {
+    width: calc(100% - 25px);
+  }
+}

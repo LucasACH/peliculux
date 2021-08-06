@@ -1,0 +1,30 @@
+.filter-drawer {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 100px;
+  width: 25%;
+  padding-bottom: 30px;
+  height: calc(100% - 100px);
+  background: var(--primary-color);
+  transform: translateX(-110%);
+  transition: transform 0.2s ease-out;
+  overflow-x: visible;
+  box-shadow: 10px 10px 10px 0px var(--highlight-color);
+}
+
+.open {
+  transform: translateX(0%);
+}
+
+.filter-drawer > .filter-item {
+  margin: 0 30px;
+  padding: 20px 0px;
+}
+
+.filter-drawer > .filter-item > .genres {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
+}
